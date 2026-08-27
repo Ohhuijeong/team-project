@@ -1,0 +1,434 @@
+@charset "utf-8";
+
+html,
+head,
+body,
+ol,
+ul,
+li,
+p,
+div,
+dl,
+dt,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+table,
+tr,
+td,
+th,
+tbody,
+thead,
+tfoot,
+caption,
+header,
+nav,
+section,
+article,
+aside,
+figure,
+figcaption,
+footer,
+address,
+form,
+fieldset,
+legend,
+textarea {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+}
+
+textarea {
+    resize: none;
+}
+
+address,
+em,
+i {
+    font-style: normal;
+}
+
+table {
+    border-collapse: collapse;
+    /* td 간의 간격을 없앰 */
+}
+
+/* 텍스트 블라인드 */
+.blind {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    /* 보여줄 영역만 남기고 나머지 부분은 자르는 명령 */
+    white-space: nowrap;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+    background: transparent;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+button {
+    background: transparent;
+    cursor: pointer;
+}
+
+body {
+    color: #111;
+}
+
+/* header */
+header {
+    width: 100%;
+    height: 90px;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    z-index: 100;
+}
+
+.header-inner {
+    max-width: 1400px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    position: relative;
+    z-index: 101;
+}
+
+/* pc gnb */
+.gnb {
+    height: 100%;
+}
+
+.gnb-list {
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+    gap: 50px;
+}
+
+/* 1depth */
+.gnb-item {
+    height: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.gnb-link {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 5px;
+    font-size: 15px;
+    font-weight: 600;
+    position: relative;
+}
+
+/* 밑줄효과 */
+.gnb-link::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 0;
+    height: 3px;
+    background: #111;
+    transition: 0.3s;
+}
+
+.gnb-item:hover .gnb-link::after,
+.gnb-item.active .gnb-link::after {
+    width: 100%
+}
+
+/* 2depth */
+.sub-menu {
+    position: absolute;
+    top: 90px;
+    left: 50%;
+
+    transform: translateX(-50%) translateY(10px);
+    width: 180px;
+    padding: 18px;
+    background: #fff;
+    border: 1px solid #eee;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+}
+
+.sub-menu a {
+    display: block;
+    padding: 10px 20px;
+    font-size: 15px;
+    color: #666;
+    transition: 0.2s;
+}
+
+.sub-menu a:hover {
+    color: #111;
+    background: #f7f7f7;
+}
+
+.gnb-item.active .sub-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0)
+}
+
+/* mobile button */
+.menu-btn {
+    width: 32px;
+    height: 24px;
+    position: relative;
+    z-index: 101;
+
+    display: none;
+}
+
+.menu-btn span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #111;
+    transition: 0.3s;
+}
+
+.menu-btn span:nth-child(1) {
+    top: 0
+}
+
+.menu-btn span:nth-child(2) {
+    top: 11px
+}
+
+.menu-btn span:nth-child(3) {
+    top: 22px
+}
+
+/* 닫기모양 */
+.menu-btn.active span:nth-child(1) {
+    top: 11px;
+    transform: rotate(45deg);
+}
+
+.menu-btn.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-btn.active span:nth-child(3) {
+    top: 11px;
+    transform: rotate(-45deg);
+}
+
+/* visual */
+.visual {
+    min-height: calc(100vh - 90px);
+    display: flex;
+    align-items: center;
+
+    padding: 80px;
+    background: linear-gradient(120deg, #f5f5f5, #dedede);
+}
+
+.visual-text {
+    max-width: 1200px;
+    width: 100%;
+    margin: auto;
+}
+
+.visual p {
+    margin-bottom: 30px;
+    font-size: 14px;
+    line-height: 4px;
+}
+
+.visual h2 {
+    margin-bottom: 30px;
+    font-size: clamp(50px, 7vw, 110px);
+    line-height: 0.95;
+    letter-spacing: -5px;
+}
+
+/* 
+    clamp(최소값, 기본값, 최대값) 
+    아무리 화면이 작아도 50px보다 작아지지않음
+    아무리 화면이 커도 110px보다 커지지않음
+    1vw =화면너비의 1%
+    화면너비 1200px * 7% = 84px
+*/
+.visual-text span {
+    color: #666;
+}
+
+/* tablet/mobile */
+@media (max-width: 768px) {
+
+    /* header */
+    .header {
+        height: 70px;
+    }
+
+    .header-inner {
+        padding: 0 20px;
+    }
+
+    /* 모바일 햄버거버튼 표시 */
+    .menu-btn {
+        display: block;
+    }
+
+    /* mobile navigation */
+    .gnb {
+        position: fixed;
+        top: 70px;
+        left: 0;
+
+        width: 100%;
+        height: calc(100vh - 70px);
+        background: #fff;
+        padding: 30px 20px;
+        overflow-y: auto;
+
+        transform: translateX(100%);
+        transition: 0.4s;
+    }
+
+    .gnb.open {
+        transform: translateX(0);
+    }
+
+    /* 모바일 depth1 */
+    .gnb-list {
+        display: block;
+        height: auto;
+    }
+
+    .gnb-item {
+        display: block;
+        height: auto;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .gnb-link {
+        height: 65px;
+        padding: 0;
+        font-size: 22px;
+        justify-content: space-between;
+    }
+
+    /* pc 밑줄 제거 */
+    .gnb-link::after {
+        display: none;
+    }
+
+    /* 2depth가 존재하는 메뉴 뒤에 */
+    .gnb-item:has(.sub-menu)>.gnb-link::before {
+        content: '+';
+        order: 2;
+        font-size: 24px;
+        font-weight: 300;
+    }
+
+    /* 메뉴가 열리면 + -> - */
+    .gnb-item.active>.gnb-link::before {
+        content: "-";
+    }
+
+    /* 2depth */
+    .sub-menu {
+        position: static;
+        width: 100%;
+        padding: 0;
+        border: 0;
+        box-shadow: none;
+        transform: none;
+        opacity: 1;
+        visibility: visible;
+
+        /* 1depth 클릭전에는 숨김 */
+        max-height: 0;
+        overflow: hidden;
+        transition: 0.4s;
+        background: #f7f7f7;
+    }
+
+    /* active 붙으면 2depth가 열림 */
+    .gnb-item.active .sub-menu {
+        max-height: 300px;
+        transform: none;
+    }
+
+    .sub-menu li:first-child {
+        padding-top: 20px;
+    }
+
+    .sub-menu li:last-child {
+        padding-bottom: 20px;
+    }
+
+    .sub-menu a {
+        padding: 10px 20px;
+        font-size: 15px;
+    }
+
+    /* visual */
+    .visual {
+        min-height: calc(100vh - 70px);
+        padding: 50px 20px;
+    }
+
+    .visual-text h2 {
+        font-size: 52px;
+        letter-spacing: -2px;
+    }
+}
